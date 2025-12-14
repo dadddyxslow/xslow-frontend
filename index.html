@@ -1,137 +1,130 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<title>𝐗𝐒𝐋𝐎𝐖 𝐂𝐫𝐞𝐚𝐭𝐨𝐫 𝐕𝟒 𝐒𝐘𝐒𝐓𝐄𝐌</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bakım Aşamasında — XSLOW</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Orbitron',sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
 body{
-  height:100vh;
-  background:#000;
-  overflow:hidden;
-  color:#0ff;
+  min-height:100vh;
+  background:radial-gradient(1200px 600px at 50% 10%, #0b0b18, #05050a 60%, #020205);
+  color:#e8e8ff;
+  font-family:'Orbitron',system-ui,Arial;
+  overflow-x:hidden;
 }
-
-/* 🌌 STARS */
-canvas{
-  position:fixed;
-  inset:0;
-  z-index:0;
-}
-
-/* 🔥 MAIN */
-.container{
+.container{max-width:1100px;margin:auto;padding:40px 20px}
+.hero{
+  border:1px solid rgba(138,180,255,.15);
+  border-radius:18px;
+  padding:40px 24px;
+  background:linear-gradient(180deg, rgba(20,30,70,.35), rgba(10,10,30,.35));
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
   position:relative;
-  z-index:2;
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.card{
-  background:rgba(0,0,0,.75);
-  border:1px solid #0ff;
-  box-shadow:0 0 30px #0ff, inset 0 0 20px #0ff;
-  padding:50px 40px;
-  max-width:420px;
-  text-align:center;
-  animation: glow 2s infinite alternate;
-}
-
-@keyframes glow{
-  from{box-shadow:0 0 20px #0ff;}
-  to{box-shadow:0 0 50px #0ff;}
-}
-
-/* ⚡ GLITCH */
-.glitch{
-  font-size:32px;
-  position:relative;
-  animation: glitch 1s infinite;
-}
-.glitch::before,.glitch::after{
-  content:attr(data-text);
-  position:absolute;
-  left:0;
-}
-.glitch::before{
-  color:#f0f;
-  animation: glitch 0.3s infinite;
-}
-.glitch::after{
-  color:#0f0;
-  animation: glitch 0.4s infinite;
-}
-
-@keyframes glitch{
-  0%{transform:translate(0)}
-  20%{transform:translate(-2px,2px)}
-  40%{transform:translate(2px,-2px)}
-  60%{transform:translate(-1px,1px)}
-  80%{transform:translate(1px,-1px)}
-  100%{transform:translate(0)}
-}
-
-/* 🔒 LOCK */
-.lock{
-  font-size:60px;
-  margin:20px 0;
-  text-shadow:0 0 20px #0ff;
-}
-
-/* 🧠 AI BAR */
-.bar{
-  width:100%;
-  height:10px;
-  background:#111;
-  border:1px solid #0ff;
-  margin:20px 0;
   overflow:hidden;
 }
-.fill{
-  height:100%;
-  width:0%;
-  background:#0ff;
-  box-shadow:0 0 20px #0ff;
-}
-
-/* 🚀 BUTTON */
+.glow{position:absolute;inset:-2px;border-radius:18px;filter:blur(18px);background:linear-gradient(90deg,#7aa2ff,#a97bff,#5cf2ff);opacity:.18}
+.hero h1{font-size:clamp(26px,4vw,42px);letter-spacing:.04em;margin-bottom:10px}
+.hero p{opacity:.9;line-height:1.6;margin-bottom:18px}
+.badge{display:inline-block;padding:8px 14px;border-radius:999px;background:rgba(122,162,255,.15);border:1px solid rgba(122,162,255,.35);margin-bottom:14px}
+.countdown{display:flex;gap:14px;margin:18px 0}
+.time{background:rgba(12,16,40,.7);border:1px solid rgba(138,180,255,.25);border-radius:14px;padding:14px 16px;min-width:80px;text-align:center}
+.time span{display:block;font-size:22px;font-weight:700}
+.contact{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px}
 .btn{
-  margin-top:20px;
-  padding:12px 30px;
-  border:1px solid #0ff;
-  background:transparent;
-  color:#0ff;
-  cursor:pointer;
-  transition:.3s;
+  padding:12px 18px;border-radius:12px;text-decoration:none;color:#0b0b18;
+  background:linear-gradient(135deg,#7aa2ff,#5cf2ff);
+  font-weight:700
 }
-.btn:hover{
-  background:#0ff;
-  color:#000;
-  box-shadow:0 0 25px #0ff;
+.section{margin-top:50px}
+.section h2{font-size:clamp(20px,3vw,28px);margin-bottom:18px;text-align:center}
+.slider{
+  position:relative;overflow:hidden;
 }
-
-/* FOOT */
-.small{
-  margin-top:15px;
-  font-size:12px;
-  opacity:.6;
+.track{
+  display:flex;gap:16px;
+  animation:scroll 60s linear infinite;
 }
+.card{
+  min-width:260px;
+  background:rgba(12,16,40,.6);
+  border:1px solid rgba(138,180,255,.18);
+  border-radius:14px;padding:16px
+}
+.card .name{font-weight:700;margin-bottom:6px}
+.card .stars{color:#ffd166;letter-spacing:2px;margin-bottom:6px}
+@keyframes scroll{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+.footer{opacity:.7;text-align:center;margin:50px 0 10px}
 </style>
 </head>
-
 <body>
-
-<canvas id="stars"></canvas>
-
 <div class="container">
-  <div class="card">
-    <div class="glitch" data-text="XSLOW PRO">XSLOW PRO</div>
-    <div class="lock">🔒</div>
-    <p>Image Enhancer</p>
 
-    <div class="b
+  <div class="hero">
+    <div class="glow"></div>
+    <span class="badge">BAKIM AŞAMASINDA</span>
+    <h1>Şu an bakımdayız</h1>
+    <p>Yakında sizlerle. Sistemlerimiz güçlendiriliyor, yeni düzen çok yakında aktif olacak.</p>
+
+    <div class="countdown">
+      <div class="time"><span id="d">00</span>Gün</div>
+      <div class="time"><span id="h">00</span>Saat</div>
+      <div class="time"><span id="m">00</span>Dakika</div>
+      <div class="time"><span id="s">00</span>Saniye</div>
+    </div>
+
+    <div class="contact">
+      <a class="btn" href="tel:+905346156180">İletişim: +90 534 615 61 80</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Müşteri Yorumları</h2>
+    <div class="slider">
+      <div class="track" id="track"></div>
+    </div>
+  </div>
+
+  <div class="footer">© XSLOW — Yakında Sizlerle</div>
+</div>
+
+<script>
+// Geri Sayım (örnek: 15 gün sonrası)
+const target = new Date();
+target.setDate(target.getDate()+15);
+setInterval(()=>{
+  const now = new Date();
+  const diff = target-now;
+  if(diff<=0) return;
+  document.getElementById('d').innerText=Math.floor(diff/86400000);
+  document.getElementById('h').innerText=Math.floor(diff/3600000)%24;
+  document.getElementById('m').innerText=Math.floor(diff/60000)%60;
+  document.getElementById('s').innerText=Math.floor(diff/1000)%60;
+},1000);
+
+// Sahte müşteri yorumları
+const names=[
+"Alper Nova","Mertix One","Deniz Varo","Kaan Flux","Eren Void","Bora Zenith","Atlas Rey","Vega Storm",
+"Lorin Max","Nexa Blue","Raven X","Orion Tek","Koral Vibe","Zeo Prime","Arda Pixel","Luna Ray",
+"Mira Soft","Tuna Code","Sarp Neon","Eko Labs","Nova Mind","Kiro Dev","Mavi Studio","Pulse UX",
+"Hexa Works","Zion Media","Fluxera","Drift UI","Aero Digital","Kare Labs","Mono Tech","Syntx",
+"Pixelon","Hyperion","Ghostline","Aurora Dev","Vortex","Blaze UI","Cryptex","Nimex",
+"Ultravue","Darkwave","Lightform","Axion","Spectra","Zenbyte","Omega Dev","Cloudix","Infyn"
+];
+const comments=[
+"Hızlı teslim ve kusursuz sonuç.","Tasarım kalitesi gerçekten fark yaratıyor.","İletişim çok net ve profesyonel.",
+"Beklentimizin üstünde bir çalışma.","Modern ve güçlü bir altyapı.","Göz alıcı ve akıcı bir deneyim."
+];
+const track=document.getElementById('track');
+let html="";
+names.forEach(n=>{
+  html+=`<div class=\"card\"><div class=\"name\">${n}</div><div class=\"stars\">★★★★★</div><p>${comments[Math.floor(Math.random()*comments.length)]}</p></div>`;
+});
+track.innerHTML=html+html; // sonsuz akış
+</script>
+</body>
+</html>
