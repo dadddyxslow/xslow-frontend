@@ -3,216 +3,135 @@
 <head>
 <meta charset="UTF-8">
 <title>𝐗𝐒𝐋𝐎𝐖 𝐂𝐫𝐞𝐚𝐭𝐨𝐫 𝐕𝟒 𝐒𝐘𝐒𝐓𝐄𝐌</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --neon1:#00f6ff;
-  --neon2:#7b5cff;
-  --bg:#000010;
-}
-*{box-sizing:border-box}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Orbitron',sans-serif;}
 body{
-  margin:0;
-  min-height:100vh;
+  height:100vh;
   background:#000;
-  color:#fff;
-  font-family:'Orbitron',sans-serif;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
   overflow:hidden;
+  color:#0ff;
 }
 
-/* 🌌 CANVAS */
-#bg{
+/* 🌌 STARS */
+canvas{
   position:fixed;
   inset:0;
-  z-index:-1;
+  z-index:0;
 }
 
-/* INTRO */
-#intro{
-  position:fixed;
-  inset:0;
-  background:#000;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  z-index:10;
-  animation:fadeOut 1s ease forwards;
-  animation-delay:2.8s;
-}
-#intro h1{
-  color:var(--neon1);
-  text-shadow:0 0 25px var(--neon1);
-  animation:pulse 1.2s infinite alternate;
-}
-@keyframes pulse{
-  from{transform:scale(1)}
-  to{transform:scale(1.08)}
-}
-@keyframes fadeOut{
-  to{opacity:0;pointer-events:none}
-}
-
+/* 🔥 MAIN */
 .container{
-  width:100%;
-  max-width:720px;
-  padding:40px 20px;
-}
-
-.logo{
-  font-size:42px;
-  margin-bottom:10px;
-  color:var(--neon1);
-  text-shadow:0 0 12px var(--neon1),0 0 35px var(--neon2);
-}
-
-.subtitle{opacity:.85;margin-bottom:28px}
-
-.badge{
-  display:inline-block;
-  padding:8px 18px;
-  border-radius:999px;
-  border:1px solid var(--neon1);
-  box-shadow:0 0 18px var(--neon1);
-  color:var(--neon1);
-  margin-bottom:25px;
-  font-size:13px;
+  position:relative;
+  z-index:2;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .card{
-  background:rgba(5,5,25,.78);
-  border-radius:22px;
-  padding:32px 22px;
-  box-shadow:0 0 45px rgba(0,246,255,.18);
-  backdrop-filter:blur(6px);
+  background:rgba(0,0,0,.75);
+  border:1px solid #0ff;
+  box-shadow:0 0 30px #0ff, inset 0 0 20px #0ff;
+  padding:50px 40px;
+  max-width:420px;
+  text-align:center;
+  animation: glow 2s infinite alternate;
 }
 
-input[type=file]{
-  width:100%;
+@keyframes glow{
+  from{box-shadow:0 0 20px #0ff;}
+  to{box-shadow:0 0 50px #0ff;}
+}
+
+/* ⚡ GLITCH */
+.glitch{
+  font-size:32px;
+  position:relative;
+  animation: glitch 1s infinite;
+}
+.glitch::before,.glitch::after{
+  content:attr(data-text);
+  position:absolute;
+  left:0;
+}
+.glitch::before{
+  color:#f0f;
+  animation: glitch 0.3s infinite;
+}
+.glitch::after{
+  color:#0f0;
+  animation: glitch 0.4s infinite;
+}
+
+@keyframes glitch{
+  0%{transform:translate(0)}
+  20%{transform:translate(-2px,2px)}
+  40%{transform:translate(2px,-2px)}
+  60%{transform:translate(-1px,1px)}
+  80%{transform:translate(1px,-1px)}
+  100%{transform:translate(0)}
+}
+
+/* 🔒 LOCK */
+.lock{
+  font-size:60px;
   margin:20px 0;
-  padding:14px;
-  border-radius:14px;
-  border:1px solid #1f2a44;
-  background:#050514;
-  color:#fff;
+  text-shadow:0 0 20px #0ff;
 }
 
-.btn{
-  padding:16px 30px;
-  border:none;
-  border-radius:16px;
-  font-size:15px;
-  cursor:pointer;
-  color:#fff;
-  background:linear-gradient(135deg,var(--neon2),var(--neon1));
-  box-shadow:0 0 22px rgba(0,246,255,.65);
-}
-.btn:hover{transform:scale(1.06)}
-
-.progress{
+/* 🧠 AI BAR */
+.bar{
+  width:100%;
   height:10px;
-  background:#0b0b1f;
-  border-radius:999px;
+  background:#111;
+  border:1px solid #0ff;
+  margin:20px 0;
   overflow:hidden;
-  margin-top:25px;
-  display:none;
 }
-.progress span{
-  display:block;
+.fill{
   height:100%;
   width:0%;
-  background:linear-gradient(90deg,var(--neon1),var(--neon2));
+  background:#0ff;
+  box-shadow:0 0 20px #0ff;
 }
 
-.links{margin-top:30px}
-.links a{color:#fff;text-decoration:none;font-size:13px;opacity:.8}
-.links a:hover{opacity:1;color:var(--neon1)}
+/* 🚀 BUTTON */
+.btn{
+  margin-top:20px;
+  padding:12px 30px;
+  border:1px solid #0ff;
+  background:transparent;
+  color:#0ff;
+  cursor:pointer;
+  transition:.3s;
+}
+.btn:hover{
+  background:#0ff;
+  color:#000;
+  box-shadow:0 0 25px #0ff;
+}
 
-footer{margin-top:38px;font-size:12px;opacity:.55}
+/* FOOT */
+.small{
+  margin-top:15px;
+  font-size:12px;
+  opacity:.6;
+}
 </style>
 </head>
 
 <body>
 
-<canvas id="bg"></canvas>
-
-<div id="intro">
-  <h1>XSLOW SYSTEM</h1>
-  <p>Initializing...</p>
-</div>
+<canvas id="stars"></canvas>
 
 <div class="container">
-  <div class="logo">𝐗𝐒𝐋𝐎𝐖 𝐂𝐫𝐞𝐚𝐭𝐨𝐫 𝐕𝟒</div>
-  <div class="subtitle">Video & Görsel Kalite Artırma Sistemi</div>
-
-  <div class="badge">ÜCRETSİZ DEMO — PRO KİLİTLİ</div>
-
   <div class="card">
-    <input type="file" id="fileInput">
-    <button class="btn" onclick="startDemo()">İşlemi Başlat</button>
+    <div class="glitch" data-text="XSLOW PRO">XSLOW PRO</div>
+    <div class="lock">🔒</div>
+    <p>Image Enhancer</p>
 
-    <div class="progress" id="prog">
-      <span id="bar"></span>
-    </div>
-  </div>
-
-  <div class="links">
-    <a href="https://wa.me/22546093114" target="_blank">Reklam / İş Birliği / Destek</a>
-  </div>
-
-  <footer>© XSLOW RESMİ</footer>
-</div>
-
-<script>
-// 🌌 STAR BACKGROUND
-const c=document.getElementById('bg'),ctx=c.getContext('2d');
-function resize(){c.width=innerWidth;c.height=innerHeight}
-resize();addEventListener('resize',resize);
-
-const stars=[...Array(120)].map(()=>({
- x:Math.random()*c.width,
- y:Math.random()*c.height,
- r:Math.random()*2+0.5,
- s:Math.random()*0.4+0.2
-}));
-
-function draw(){
- ctx.clearRect(0,0,c.width,c.height);
- ctx.fillStyle='#00f6ff';
- stars.forEach(st=>{
-   ctx.beginPath();
-   ctx.arc(st.x,st.y,st.r,0,Math.PI*2);
-   ctx.fill();
-   st.y+=st.s;
-   if(st.y>c.height){st.y=0;st.x=Math.random()*c.width}
- });
- requestAnimationFrame(draw);
-}
-draw();
-
-// ⚡ DEMO
-function startDemo(){
- const f=fileInput.files[0];
- if(!f){alert("Dosya seç");return}
- prog.style.display='block';
- let v=0;
- const i=setInterval(()=>{
-   v+=10;
-   bar.style.width=v+'%';
-   if(v>=100){
-     clearInterval(i);
-     location.href="pro.html";
-   }
- },280);
-}
-</script>
-
-</body>
-</html>
+    <div class="b
