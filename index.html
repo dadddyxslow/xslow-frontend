@@ -5,6 +5,7 @@
 <title>𝐗𝐒𝐋𝐎𝐖 𝐂𝐫𝐞𝐚𝐭𝐨𝐫 𝐕𝟒 𝐒𝐘𝐒𝐓𝐄𝐌</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
 :root{
   --neon1:#00f6ff;
@@ -12,33 +13,68 @@
   --bg:#000010;
 }
 *{box-sizing:border-box}
+
 body{
   margin:0;
   min-height:100vh;
-  background:radial-gradient(circle at top,var(--bg),#000);
+  background:#000;
   color:#fff;
   font-family:'Orbitron',sans-serif;
   display:flex;
   justify-content:center;
   align-items:center;
   text-align:center;
+  overflow:hidden;
 }
+
+/* 🌌 CANVAS */
+#bg{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+}
+
+/* INTRO */
+#intro{
+  position:fixed;
+  inset:0;
+  background:#000;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:10;
+  animation:fadeOut 1s ease forwards;
+  animation-delay:2.8s;
+}
+#intro h1{
+  color:var(--neon1);
+  text-shadow:0 0 25px var(--neon1);
+  animation:pulse 1.2s infinite alternate;
+}
+@keyframes pulse{
+  from{transform:scale(1)}
+  to{transform:scale(1.08)}
+}
+@keyframes fadeOut{
+  to{opacity:0;pointer-events:none}
+}
+
 .container{
   width:100%;
   max-width:720px;
   padding:40px 20px;
 }
+
 .logo{
   font-size:42px;
-  letter-spacing:2px;
   margin-bottom:10px;
   color:var(--neon1);
   text-shadow:0 0 12px var(--neon1),0 0 35px var(--neon2);
 }
-.subtitle{
-  opacity:.85;
-  margin-bottom:28px;
-}
+
+.subtitle{opacity:.85;margin-bottom:28px}
+
 .badge{
   display:inline-block;
   padding:8px 18px;
@@ -49,6 +85,7 @@ body{
   margin-bottom:25px;
   font-size:13px;
 }
+
 .card{
   background:rgba(5,5,25,.78);
   border-radius:22px;
@@ -56,6 +93,7 @@ body{
   box-shadow:0 0 45px rgba(0,246,255,.18);
   backdrop-filter:blur(6px);
 }
+
 input[type=file]{
   width:100%;
   margin:20px 0;
@@ -65,8 +103,8 @@ input[type=file]{
   background:#050514;
   color:#fff;
 }
+
 .btn{
-  margin-top:10px;
   padding:16px 30px;
   border:none;
   border-radius:16px;
@@ -75,12 +113,9 @@ input[type=file]{
   color:#fff;
   background:linear-gradient(135deg,var(--neon2),var(--neon1));
   box-shadow:0 0 22px rgba(0,246,255,.65);
-  transition:.25s;
 }
-.btn:hover{
-  transform:scale(1.06);
-  box-shadow:0 0 45px rgba(0,246,255,1);
-}
+.btn:hover{transform:scale(1.06)}
+
 .progress{
   height:10px;
   background:#0b0b1f;
@@ -95,33 +130,32 @@ input[type=file]{
   width:0%;
   background:linear-gradient(90deg,var(--neon1),var(--neon2));
 }
-.links{
-  margin-top:30px;
-}
-.links a{
-  color:#fff;
-  text-decoration:none;
-  font-size:13px;
-  opacity:.8;
-}
+
+.links{margin-top:30px}
+.links a{color:#fff;text-decoration:none;font-size:13px;opacity:.8}
 .links a:hover{opacity:1;color:var(--neon1)}
-footer{
-  margin-top:38px;
-  font-size:12px;
-  opacity:.55;
-}
+
+footer{margin-top:38px;font-size:12px;opacity:.55}
 </style>
 </head>
 
 <body>
+
+<canvas id="bg"></canvas>
+
+<div id="intro">
+  <h1>XSLOW SYSTEM</h1>
+  <p>Initializing...</p>
+</div>
+
 <div class="container">
-  <div class="logo">𝐗𝐒𝐋𝐎𝐖 𝐂𝐫𝐞𝐚𝐭𝐨𝐫 𝐕𝟒 𝐒𝐘𝐒𝐓𝐄𝐌</div>
+  <div class="logo">𝐗𝐒𝐋𝐎𝐖 𝐂𝐫𝐞𝐚𝐭𝐨𝐫 𝐕𝟒</div>
   <div class="subtitle">Video & Görsel Kalite Artırma Sistemi</div>
 
-  <div class="badge">ÜCRETSİZ DEMO — PRO ÇIKTI KİLİTLİ</div>
+  <div class="badge">ÜCRETSİZ DEMO — PRO KİLİTLİ</div>
 
   <div class="card">
-    <input type="file" id="fileInput" />
+    <input type="file" id="fileInput">
     <button class="btn" onclick="startDemo()">İşlemi Başlat</button>
 
     <div class="progress" id="prog">
@@ -133,31 +167,52 @@ footer{
     <a href="https://wa.me/22546093114" target="_blank">Reklam / İş Birliği / Destek</a>
   </div>
 
-  <footer>©ʙᴜ sʏsᴛᴇᴍ xsʟᴏᴡ ʀᴇsᴍɪ̇ ᴛᴀʀᴀғɪɴᴅᴀɴ ʏᴀᴘɪʟᴍɪşᴛɪʀ ᴛᴜ̈ᴍ ʜᴀᴋʟᴀʀı sᴀᴋʟıᴅıʀ</footer>
+  <footer>© XSLOW RESMİ</footer>
 </div>
 
 <script>
+// 🌌 STAR BACKGROUND
+const c=document.getElementById('bg'),ctx=c.getContext('2d');
+function resize(){c.width=innerWidth;c.height=innerHeight}
+resize();addEventListener('resize',resize);
+
+const stars=[...Array(120)].map(()=>({
+ x:Math.random()*c.width,
+ y:Math.random()*c.height,
+ r:Math.random()*2+0.5,
+ s:Math.random()*0.4+0.2
+}));
+
+function draw(){
+ ctx.clearRect(0,0,c.width,c.height);
+ ctx.fillStyle='#00f6ff';
+ stars.forEach(st=>{
+   ctx.beginPath();
+   ctx.arc(st.x,st.y,st.r,0,Math.PI*2);
+   ctx.fill();
+   st.y+=st.s;
+   if(st.y>c.height){st.y=0;st.x=Math.random()*c.width}
+ });
+ requestAnimationFrame(draw);
+}
+draw();
+
+// ⚡ DEMO
 function startDemo(){
-  const file=document.getElementById('fileInput').files[0];
-  if(!file){
-    alert("Lütfen bir dosya seç.");
-    return;
-  }
-
-  const p=document.getElementById('prog');
-  const b=document.getElementById('bar');
-  p.style.display='block';
-
-  let v=0;
-  const i=setInterval(()=>{
-    v+=10;
-    b.style.width=v+'%';
-    if(v>=100){
-      clearInterval(i);
-      window.location.href="pro.html";
-    }
-  },280);
+ const f=fileInput.files[0];
+ if(!f){alert("Dosya seç");return}
+ prog.style.display='block';
+ let v=0;
+ const i=setInterval(()=>{
+   v+=10;
+   bar.style.width=v+'%';
+   if(v>=100){
+     clearInterval(i);
+     location.href="pro.html";
+   }
+ },280);
 }
 </script>
+
 </body>
 </html>
